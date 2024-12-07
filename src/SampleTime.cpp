@@ -28,10 +28,10 @@ namespace BlockTypes::BasicCpp
             if (supportedSampleTimeTypesForInheritance.empty())
             {
                 throw std::invalid_argument("You must specify supportedSampleTimeTypesForInheritance for inherited sample time type.");
-                if (std::find(supportedSampleTimeTypesForInheritance.begin(), supportedSampleTimeTypesForInheritance.end(), SampleTimeType::inherited) != supportedSampleTimeTypesForInheritance.end())
-                {
-                    throw std::invalid_argument("supportedSampleTimeTypesForInheritance can not contain inherited sample time, it can not be resolved.");
-                }
+            }
+            if (std::find(supportedSampleTimeTypesForInheritance.begin(), supportedSampleTimeTypesForInheritance.end(), SampleTimeType::inherited) != supportedSampleTimeTypesForInheritance.end())
+            {
+                throw std::invalid_argument("supportedSampleTimeTypesForInheritance can not contain inherited sample time, it can not be resolved.");
             }
             this->supportedSampleTimeTypesForInheritance = supportedSampleTimeTypesForInheritance;
         }
@@ -68,7 +68,7 @@ namespace BlockTypes::BasicCpp
     
     const std::vector<SampleTimeType> SampleTime::GetSupportedSampleTimeTypesForInheritance() const
     {
-        if (this->sampleTimeType != SampleTimeType::continuous)
+        if (this->sampleTimeType != SampleTimeType::inherited)
         {
             throw std::out_of_range("Sample time types distinct to inherited does not have continuous supportedSampleTimeTypesForInheritance, check before accessing");
         }

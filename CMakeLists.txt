@@ -79,3 +79,8 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/BlockTypesBasicCppConfig.cmake
 install(TARGETS BlockTypesBasicCpp
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib)
+
+
+if(UNIX AND NOT APPLE) # Linux-specific
+    install(CODE "execute_process(COMMAND ldconfig)")
+endif()

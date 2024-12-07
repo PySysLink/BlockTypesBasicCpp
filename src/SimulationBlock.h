@@ -1,5 +1,5 @@
-#ifndef SRC_BLOCK_TYPES_BASIC_CPP_SIMULATION_BLOCK
-#define SRC_BLOCK_TYPES_BASIC_CPP_SIMULATION_BLOCK
+#ifndef SRC_SIMULATION_BLOCK
+#define SRC_SIMULATION_BLOCK
 
 #include <map>
 #include <vector>
@@ -13,6 +13,7 @@ namespace BlockTypes::BasicCpp
     class SimulationBlock
     {
         public:
+        SimulationBlock(std::map<std::string, BlockTypes::BasicCpp::ConfigurationValue> configurationValues) {};
         virtual const std::vector<SampleTime>& GetSampleTimes() const = 0;
         virtual const int GetInputPortAmmount() const = 0;
         virtual const int GetOutputPortAmmount() const = 0;
@@ -23,4 +24,4 @@ namespace BlockTypes::BasicCpp
 } // namespace BlockTypes::BasicCpp
 
 
-#endif /* SRC_BLOCK_TYPES_BASIC_CPP_SIMULATION_BLOCK */
+#endif /* SRC_SIMULATION_BLOCK */
