@@ -4,7 +4,7 @@
 
 namespace BlockTypes::BasicCpp
 {
-    SampleTime::SampleTime(SampleTimeType sampleTimeType, double discreteSampleTime, int continuousSampleTimeGroup, std::vector<SampleTimeType> supportedSampleTimeTypesForInheritance)
+    SampleTime::SampleTime(SampleTimeType sampleTimeType, double discreteSampleTime, int continuousSampleTimeGroup, std::vector<SampleTimeType> supportedSampleTimeTypesForInheritance, std::vector<SampleTime> multirateSampleTimes)
     {
         this->sampleTimeType = sampleTimeType;
         if (sampleTimeType == SampleTimeType::discrete)
@@ -34,6 +34,15 @@ namespace BlockTypes::BasicCpp
                 throw std::invalid_argument("supportedSampleTimeTypesForInheritance can not contain inherited sample time, it can not be resolved.");
             }
             this->supportedSampleTimeTypesForInheritance = supportedSampleTimeTypesForInheritance;
+        }
+        else if (sampleTimeType == SampleTimeType::multirate)
+        {
+            if (multirateSampleTimes.empty())
+            {
+                throw std::invalid_argument("You must specify multirateSampleTimes for multirate sample time type.");
+            }
+            // TODO: check for nested multirate sample times
+            this->multirateSampleTimes = multirateSampleTimes;
         }
     }
 
