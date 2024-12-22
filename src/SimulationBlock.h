@@ -23,6 +23,9 @@ namespace BlockTypes::BasicCpp
         virtual const std::vector<bool> InputsHasDirectFeedthrough() const = 0;
 
         virtual std::vector<double> CalculateOutputs(const std::vector<double> inputs, std::shared_ptr<SampleTime> sampleTime) = 0;
+
+        virtual bool TryUpdateConfigurationValue(std::string keyName, ConfigurationValue value) {return false;}
+
     };
 } // namespace BlockTypes::BasicCpp
 
