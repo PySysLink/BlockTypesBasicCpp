@@ -1,0 +1,35 @@
+Date : 2024-12-22 16:51:33
+Directory : /home/pello/BlockTypes/BlockTypesBasicCpp
+Total : 8 files,  305 codes, 0 comments, 67 blanks, all 372 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| cpp      |          6 |        233 |          0 |         40 |        273 |
+| CMake    |          2 |         72 |          0 |         27 |         99 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                  | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                     |          8 |        305 |          0 |         67 |        372 |
+| . (Files)                                                             |          1 |         62 |          0 |         25 |         87 |
+| src                                                                   |          7 |        243 |          0 |         42 |        285 |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                              | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /home/pello/BlockTypes/BlockTypesBasicCpp/CMakeLists.txt              | CMake    |         62 |          0 |         25 |         87 |
+| /home/pello/BlockTypes/BlockTypesBasicCpp/src/CMakeLists.txt          | CMake    |         10 |          0 |          2 |         12 |
+| /home/pello/BlockTypes/BlockTypesBasicCpp/src/ConfigurationValue.h    | cpp      |         55 |          0 |         10 |         65 |
+| /home/pello/BlockTypes/BlockTypesBasicCpp/src/IBasicCppBlockFactory.h | cpp      |         19 |          0 |          4 |         23 |
+| /home/pello/BlockTypes/BlockTypesBasicCpp/src/IEventHandler.h         | cpp      |         13 |          0 |          4 |         17 |
+| /home/pello/BlockTypes/BlockTypesBasicCpp/src/SampleTime.cpp          | cpp      |         84 |          0 |          6 |         90 |
+| /home/pello/BlockTypes/BlockTypesBasicCpp/src/SampleTime.h            | cpp      |         36 |          0 |          8 |         44 |
+| /home/pello/BlockTypes/BlockTypesBasicCpp/src/SimulationBlock.h       | cpp      |         26 |          0 |          8 |         34 |
+| Total                                                                 |          |        305 |          0 |         67 |        372 |
++-----------------------------------------------------------------------+----------+------------+------------+------------+------------+

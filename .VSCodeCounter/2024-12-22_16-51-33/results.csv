@@ -1,0 +1,10 @@
+"filename", "language", "cpp", "CMake", "comment", "blank", "total"
+"/home/pello/BlockTypes/BlockTypesBasicCpp/CMakeLists.txt", "CMake", 0, 62, 0, 25, 87
+"/home/pello/BlockTypes/BlockTypesBasicCpp/src/CMakeLists.txt", "CMake", 0, 10, 0, 2, 12
+"/home/pello/BlockTypes/BlockTypesBasicCpp/src/ConfigurationValue.h", "cpp", 55, 0, 0, 10, 65
+"/home/pello/BlockTypes/BlockTypesBasicCpp/src/IBasicCppBlockFactory.h", "cpp", 19, 0, 0, 4, 23
+"/home/pello/BlockTypes/BlockTypesBasicCpp/src/IEventHandler.h", "cpp", 13, 0, 0, 4, 17
+"/home/pello/BlockTypes/BlockTypesBasicCpp/src/SampleTime.cpp", "cpp", 84, 0, 0, 6, 90
+"/home/pello/BlockTypes/BlockTypesBasicCpp/src/SampleTime.h", "cpp", 36, 0, 0, 8, 44
+"/home/pello/BlockTypes/BlockTypesBasicCpp/src/SimulationBlock.h", "cpp", 26, 0, 0, 8, 34
+"Total", "-", 233, 72, 0, 67, 372
