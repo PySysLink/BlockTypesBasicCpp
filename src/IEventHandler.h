@@ -2,14 +2,14 @@
 #define SRC_IEVENT_HANDLER
 
 #include <string>
-#include "ConfigurationValue.h"
+#include "FullySupportedSignalValue.h"
 
 namespace BlockTypes::BasicCpp
 {
     class IEventHandler
     {
         public:
-        virtual void NotifyNewValueEvent(double simulationTime, std::string valueId, ConfigurationValue value) = 0;
+        virtual void NotifyNewValueEvent(double simulationTime, std::string valueId, FullySupportedSignalValue value) = 0;
     };
 }
 
