@@ -1,12 +1,12 @@
 #include "SampleTime.h"
 #include <stdexcept>
 #include <algorithm>
-
+#include <iostream>
 
 namespace BlockTypes::BasicCpp
 {
     SampleTime::SampleTime(SampleTimeType sampleTimeType, double discreteSampleTime, int continuousSampleTimeGroup, std::vector<SampleTimeType> supportedSampleTimeTypesForInheritance, std::vector<std::shared_ptr<SampleTime>> multirateSampleTimes,
-    int inputMultirateInheritedSampleTimeIndex, int outputMultirateInheritedSampleTimeIndex)
+    int inputMultirateSampleTimeIndex, int outputMultirateSampleTimeIndex)
     {
         this->sampleTimeType = sampleTimeType;
         if (sampleTimeType == SampleTimeType::discrete)
@@ -19,7 +19,7 @@ namespace BlockTypes::BasicCpp
         }
         else if (sampleTimeType == SampleTimeType::continuous)
         {
-            if (std::isnan(continuousSampleTimeGroup))
+            if (continuousSampleTimeGroup == -1)
             {
                 throw std::invalid_argument("You must specify continuousSampleTimeGroup for continuous sample time type.");
             }
@@ -57,21 +57,21 @@ namespace BlockTypes::BasicCpp
             }
             else if (inheritedCount == 2)
             {
-                if (std::isnan(inputMultirateInheritedSampleTimeIndex) || std::isnan(outputMultirateInheritedSampleTimeIndex))
+                if (inputMultirateSampleTimeIndex == -1 || outputMultirateSampleTimeIndex == -1)
                 {
                     throw std::invalid_argument("You must specify inputMultirateInheritedSampleTimeIndex and outputMultirateInheritedSampleTimeIndex for multirate sample time type with 2 inherited sample times.");
                 }
             }
             else if (inheritedCount == 1)
             {
-                if (std::isnan(inputMultirateInheritedSampleTimeIndex) && std::isnan(outputMultirateInheritedSampleTimeIndex))
+                if (inputMultirateSampleTimeIndex == -1 && outputMultirateSampleTimeIndex == -1)
                 {
                     throw std::invalid_argument("You must specify inputMultirateInheritedSampleTimeIndex or outputMultirateInheritedSampleTimeIndex for multirate sample time type with 1 inherited sample time.");
                 }
             }
             this->multirateSampleTimes = multirateSampleTimes;
-            this->inputMultirateInheritedSampleTimeIndex = inputMultirateInheritedSampleTimeIndex;
-            this->outputMultirateInheritedSampleTimeIndex = outputMultirateInheritedSampleTimeIndex;
+            this->inputMultirateSampleTimeIndex = inputMultirateSampleTimeIndex;
+            this->outputMultirateSampleTimeIndex = outputMultirateSampleTimeIndex;
         }
     }
 
@@ -162,30 +162,75 @@ namespace BlockTypes::BasicCpp
         }
     }
 
-    const int SampleTime::GetInputMultirateInheritedSampleTimeIndex() const
+    const int SampleTime::GetInputMultirateSampleTimeIndex() const
     {
         if (this->sampleTimeType != SampleTimeType::multirate)
         {
-            throw std::out_of_range("Sample time types distinct to multirate does not have continuous inputMultirateInheritedSampleTimeIndex, check before accessing");
+            throw std::out_of_range("Sample time types distinct to multirate does not have continuous inputMultirateSampleTimeIndex, check before accessing");
         }
         else
         {
-            return this->inputMultirateInheritedSampleTimeIndex;
+            return this->inputMultirateSampleTimeIndex;
         }
     }
 
-    const int SampleTime::GetOutputMultirateInheritedSampleTimeIndex() const
+    const int SampleTime::GetOutputMultirateSampleTimeIndex() const
     {
         if (this->sampleTimeType != SampleTimeType::multirate)
         {
-            throw std::out_of_range("Sample time types distinct to multirate does not have continuous outputMultirateInheritedSampleTimeIndex, check before accessing");
+            throw std::out_of_range("Sample time types distinct to multirate does not have continuous outputMultirateSampleTimeIndex, check before accessing");
         }
         else
         {
-            return this->outputMultirateInheritedSampleTimeIndex;
+            return this->outputMultirateSampleTimeIndex;
         }
     }
 
+    const bool SampleTime::IsInputMultirateInherited() const
+    {
+        if (this->sampleTimeType != SampleTimeType::multirate)
+        {
+            throw std::out_of_range("Sample time types distinct to multirate does not have continuous IsInputMultirateInherited, check before accessing");
+        }
+        else if (this->inputMultirateSampleTimeIndex == -1)
+        {
+            throw std::out_of_range("There is no input multirate inherited sample time index, check before accessing");
+        }
+        else
+        {
+            if (this->multirateSampleTimes[this->inputMultirateSampleTimeIndex]->GetSampleTimeType() == SampleTimeType::inherited)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    const bool SampleTime::IsOutputMultirateInherited() const
+    {
+        if (this->sampleTimeType != SampleTimeType::multirate)
+        {
+            throw std::out_of_range("Sample time types distinct to multirate does not have continuous IsOutputMultirateInherited, check before accessing");
+        }
+        else if (this->outputMultirateSampleTimeIndex == -1)
+        {
+            throw std::out_of_range("There is no output multirate inherited sample time index, check before accessing");
+        }
+        else
+        {
+            if (this->multirateSampleTimes[this->outputMultirateSampleTimeIndex]->GetSampleTimeType() == SampleTimeType::inherited)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 
     std::string SampleTime::SampleTimeTypeString(SampleTimeType sampleTimeType)
     {
