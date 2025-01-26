@@ -2,6 +2,7 @@
 #define SRC_SIMULATION_BLOCK_WITH_CONTINUOUS_STATES
 
 #include "SimulationBlock.h"
+#include <utility>
 
 namespace BlockTypes::BasicCpp
 {
@@ -18,10 +19,10 @@ namespace BlockTypes::BasicCpp
             virtual const std::vector<double> GetContinousStateDerivatives(const std::vector<T> inputs, const std::shared_ptr<BlockTypes::BasicCpp::SampleTime> sampleTime, double currentTime) const = 0;
             virtual const std::vector<std::vector<double>> GetContinuousStateJacobians(const std::vector<T> inputs, const std::shared_ptr<BlockTypes::BasicCpp::SampleTime> sampleTime, double currentTime) const
             {
-                throw std::logic_error("Jacobian not implemented in this BasicCpp block. This is the deffault behaviour.");
+                throw std::logic_error("Jacobian not implemented in this BasicCpp block. This is the default behaviour.");
             }
 
-            virtual const std::vector<double> GetEvents(const std::vector<T> inputs, const std::shared_ptr<BlockTypes::BasicCpp::SampleTime> sampleTime, double currentTime) const
+            virtual const std::vector<std::pair<double, double>> GetEvents(const std::vector<T> inputs, const std::shared_ptr<BlockTypes::BasicCpp::SampleTime> sampleTime, double eventTime, std::vector<double> eventTimeStates) const
             {
                 return {};
             }
