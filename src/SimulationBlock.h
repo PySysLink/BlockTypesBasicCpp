@@ -27,6 +27,15 @@ namespace BlockTypes::BasicCpp
 
         virtual bool TryUpdateConfigurationValue(std::string keyName, ConfigurationValue value) {return false;}
 
+        virtual const std::vector<std::pair<double, double>> GetEvents(const std::vector<T> inputs, const std::shared_ptr<BlockTypes::BasicCpp::SampleTime> sampleTime, double eventTime, std::vector<double> eventTimeStates) const
+        {
+            return {};
+        }
+
+        virtual const std::vector<double> GetKnownEvents(const std::shared_ptr<BlockTypes::BasicCpp::SampleTime> resolvedSampleTime, double simulationStartTime, double simulationEndTime) const
+        {
+            return {};
+        }
     };
 } // namespace BlockTypes::BasicCpp
 
