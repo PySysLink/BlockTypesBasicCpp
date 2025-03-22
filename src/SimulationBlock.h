@@ -19,8 +19,8 @@ namespace BlockTypes::BasicCpp
         public:
         SimulationBlock(std::map<std::string, BlockTypes::BasicCpp::ConfigurationValue> configurationValues, std::shared_ptr<IEventHandler> eventHandler) : eventHandler(eventHandler) {};
         virtual const std::shared_ptr<SampleTime> GetSampleTime() const = 0;
-        virtual const int GetInputPortAmmount() const = 0;
-        virtual const int GetOutputPortAmmount() const = 0;
+        virtual const int GetInputPortAmount() const = 0;
+        virtual const int GetOutputPortAmount() const = 0;
         virtual const std::vector<bool> InputsHasDirectFeedthrough() const = 0;
 
         virtual std::vector<T> CalculateOutputs(const std::vector<T> inputs, std::shared_ptr<SampleTime> sampleTime, double currentTime, bool isMinorStep=false) = 0;

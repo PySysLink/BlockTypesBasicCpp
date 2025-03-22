@@ -17,7 +17,7 @@ namespace BlockTypes::BasicCpp
             virtual const std::vector<double> GetContinuousStates() const = 0;
             virtual void SetContinuousStates(std::vector<double> newStates) = 0;
 
-            virtual const std::vector<double> GetContinousStateDerivatives(const std::vector<T> inputs, const std::shared_ptr<BlockTypes::BasicCpp::SampleTime> sampleTime, double currentTime) const = 0;
+            virtual const std::vector<double> GetContinuousStateDerivatives(const std::vector<T> inputs, const std::shared_ptr<BlockTypes::BasicCpp::SampleTime> sampleTime, double currentTime) const = 0;
             virtual const std::vector<std::vector<double>> GetContinuousStateJacobians(const std::vector<T> inputs, const std::shared_ptr<BlockTypes::BasicCpp::SampleTime> sampleTime, double currentTime) const
             {
                 throw std::logic_error("Jacobian not implemented in this BasicCpp block. This is the default behaviour.");
