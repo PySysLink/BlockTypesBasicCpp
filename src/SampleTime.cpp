@@ -15,7 +15,16 @@ namespace BlockTypes::BasicCpp
             {
                 throw std::invalid_argument("You must specify discreteSampleTime for discrete sample time type.");
             }
-            this->discreteSampleTime = discreteSampleTime;
+            if (discreteSampleTime == -1) {
+                this->sampleTimeType = SampleTimeType::inherited;
+            } else if (discreteSampleTime > 0) {
+                this->discreteSampleTime = discreteSampleTime;
+                this->supportedSampleTimeTypesForInheritance = std::vector<SampleTimeType>{SampleTimeType::discrete};
+            }
+            else {
+                throw std::out_of_range("Discrete sample time value of: " + std::to_string(discreteSampleTime) + " not supported. Only positive values or -1 are supported");
+            }
+            
         }
         else if (sampleTimeType == SampleTimeType::continuous)
         {
